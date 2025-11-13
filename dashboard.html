@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Easy Earning Online</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #00b894, #009970);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 30px;
+      width: 330px;
+    }
+    button {
+      background: white;
+      color: #009970;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #d1ffe6;
+    }
+    .timer {
+      font-size: 22px;
+      margin-top: 10px;
+    }
+    footer {
+      margin-top: 60px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h2>Welcome to Your Dashboard 🎉</h2>
+  <p>Your plan is active! Earn daily by watching short videos.</p>
+
+  <div class="card">
+    <h3>Plan Details</h3>
+    <p id="planInfo">Plan A - Rs.200 | Reward: 15 PKR/day</p>
+    <p><strong>Balance:</strong> <span id="balance">0</span> PKR</p>
+
+    <div class="timer">Time Left: <span id="time">2:00</span></div>
+    <button id="startBtn">Start Timer</button>
+    <button id="rewardBtn" disabled>Claim Reward</button>
+  </div>
+
+  <button onclick="withdraw()">💵 Withdraw Request</button>
+
+  <footer>© 2025 EasyEarningOnline | Easypaisa: 0332-8244271</footer>
+
+  <script>
+    let seconds = 120;
+    let timer;
+    let rewardClaimed = false;
+    let balance = 0;
+
+    const timeDisplay = document.getElementById("time");
+    const startBtn = document.getElementById("startBtn");
+    const rewardBtn = document.getElementById("rewardBtn");
+    const balanceDisplay = document.getElementById("balance");
+
+    startBtn.addEventListener("click", function() {
+      startBtn.disabled = true;
+      timer = setInterval(() => {
+        seconds--;
+        let mins = Math.floor(seconds / 60);
+        let secs = seconds % 60;
+        timeDisplay.textContent = `${mins}:${secs < 10 ? "0" + secs : secs}`;
+        if (seconds <= 0) {
+          clearInterval(timer);
+          rewardBtn.disabled = false;
+          timeDisplay.textContent = "Time’s up!";
+        }
+      }, 1000);
+    });
+
+    rewardBtn.addEventListener("click", function() {
+      if (!rewardClaimed) {
+        balance += 15;
+        balanceDisplay.textContent = balance;
+        rewardClaimed = true;
+        alert("🎁 You received 15 PKR reward!");
+        rewardBtn.disabled = true;
+      }
+    });
+
+    function withdraw() {
+      if (balance < 50) {
+        alert("Minimum 50 PKR required to withdraw!");
+      } else {
+        alert("Withdraw request sent to admin! Please wait for approval.");
+        balance = 0;
+        balanceDisplay.textContent = balance;
+      }
+    }
+  </script>
+</body>
+</html>
