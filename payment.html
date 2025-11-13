@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Easy Earning Online</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #00b894, #007d5e);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    form {
+      background: rgba(0,0,0,0.3);
+      padding: 25px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 20px;
+      width: 320px;
+    }
+    input, select {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 6px;
+    }
+    button {
+      background: white;
+      color: #009970;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #d1ffe6;
+    }
+    .info {
+      margin-top: 10px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h2>💰 Choose Your Earning Plan</h2>
+  <p>Send payment to Easypaisa: <strong>0332-8244271</strong></p>
+
+  <form id="paymentForm">
+    <label><b>Select Plan</b></label><br>
+    <select id="plan" required>
+      <option value="">-- Select Plan --</option>
+      <option value="A">Plan A - Rs.200 (15 PKR/day)</option>
+      <option value="B">Plan B - Rs.500 (45 PKR/day)</option>
+      <option value="C">Plan C - Rs.1050 (100 PKR/day)</option>
+    </select><br>
+
+    <input type="text" id="sender" placeholder="Your Easypaisa Number" required><br>
+    <input type="text" id="trxid" placeholder="Transaction ID" required><br>
+    <input type="file" id="screenshot" accept="image/*" required><br>
+    <button type="submit">Submit for Approval</button>
+  </form>
+
+  <div class="info">
+    After submission, your payment will be reviewed by admin.<br>
+    Once approved, your plan will activate automatically.
+  </div>
+
+  <footer>© 2025 EasyEarningOnline | Easypaisa: 0332-8244271</footer>
+
+  <script>
+    document.getElementById("paymentForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Payment submitted successfully! Wait for admin approval.");
+      window.location.href = "dashboard.html";
+    });
+  </script>
+</body>
+</html>
