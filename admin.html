@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Easy Earning Online</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0e9a60, #00b894);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .login-box, .panel {
+      background: rgba(0,0,0,0.3);
+      padding: 25px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 40px;
+      width: 340px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 6px;
+    }
+    button {
+      background: white;
+      color: #009970;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #d1ffe6;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid white;
+      padding: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 Admin Panel - EasyEarningOnline</h2>
+
+  <div id="loginBox" class="login-box">
+    <h3>Admin Login</h3>
+    <input type="text" id="adminUser" placeholder="Admin Username" required><br>
+    <input type="password" id="adminPass" placeholder="Admin Password" required><br>
+    <button onclick="adminLogin()">Login</button>
+  </div>
+
+  <div id="adminPanel" class="panel" style="display:none;">
+    <h3>Welcome Admin</h3>
+    <p>Here you can approve/reject payments & withdrawals manually.</p>
+
+    <table>
+      <tr><th>User</th><th>Plan</th><th>Status</th><th>Action</th></tr>
+      <tr><td>Ali</td><td>Plan A</td><td>Pending</td>
+        <td>
+          <button onclick="approve('Ali')">Approve</button>
+          <button onclick="reject('Ali')">Reject</button>
+        </td>
+      </tr>
+      <tr><td>Ahmed</td><td>Plan C</td><td>Pending</td>
+        <td>
+          <button onclick="approve('Ahmed')">Approve</button>
+          <button onclick="reject('Ahmed')">Reject</button>
+        </td>
+      </tr>
+    </table>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const ADMIN_USER = "admin";
+    const ADMIN_PASS = "12345"; // tum isay change kar sakte ho
+
+    function adminLogin(){
+      const user = document.getElementById("adminUser").value;
+      const pass = document.getElementById("adminPass").value;
+      if(user === ADMIN_USER && pass === ADMIN_PASS){
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("adminPanel").style.display = "block";
+      } else {
+        alert("Invalid login!");
+      }
+    }
+
+    function approve(name){
+      alert(name + "'s payment approved ✅");
+    }
+
+    function reject(name){
+      alert(name + "'s payment rejected ❌");
+    }
+
+    function logout(){
+      document.getElementById("adminPanel").style.display = "none";
+      document.getElementById("loginBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>
